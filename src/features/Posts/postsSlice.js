@@ -2,28 +2,25 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../api';
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-	const response = await api.get('https://jsonplaceholder.typicode.com/posts');
+	const response = await api.get('/posts');
 
 	return response.data;
 });
 
 export const addNewPost = createAsyncThunk('posts/addNewPost', async (newPost) => {
-	const response = await api.post('https://jsonplaceholder.typicode.com/posts', newPost);
+	const response = await api.post('/posts', newPost);
 
 	return response.data;
 });
 
 export const deletePost = createAsyncThunk('posts/deletePost', async (postId) => {
-	const response = await api.delete(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+	const response = await api.delete(`/posts/${postId}`);
 
 	return { data: response.data, id: postId };
 });
 
 export const editPost = createAsyncThunk('posts/editPost', async (editedPost) => {
-	const response = await api.put(
-		`https://jsonplaceholder.typicode.com/posts/${editedPost.id}`,
-		editedPost,
-	);
+	const response = await api.put(`/posts/${editedPost.id}`, editedPost);
 
 	return response.data;
 });
