@@ -1,5 +1,7 @@
+import PostInfo from '../features/Posts/PostInfo';
+
 const Post = () => {
-	return <div>Post</div>;
+	return <PostInfo />;
 };
 
 export default Post;

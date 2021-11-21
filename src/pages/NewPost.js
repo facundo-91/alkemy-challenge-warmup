@@ -1,5 +1,7 @@
+import { AddPostForm } from '../features/Posts/AddPostForm';
+
 const NewPost = () => {
-	return <div>New Post</div>;
+	return <AddPostForm />;
 };
 
 export default NewPost;
