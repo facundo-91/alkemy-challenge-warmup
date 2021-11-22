@@ -30,7 +30,7 @@ const PostsList = () => {
 		);
 	} else if (postStatus === 'succeeded') {
 		content = (
-			<Row className="g-4" md={4} xs={1}>
+			<Row className="g-4" lg={4} md={3} xs={1}>
 				{posts.map((post) => (
 					<PostCard key={post.id} post={post} />
 				))}
