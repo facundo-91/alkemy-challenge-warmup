@@ -1,11 +1,11 @@
+import { Container } from 'react-bootstrap';
 import PostsList from '../features/Posts/PostsList';
 
 const Home = () => {
 	return (
-		<div>
-			<h1>Home</h1>
+		<Container className="my-4">
 			<PostsList />
-		</div>
+		</Container>
 	);
 };
 

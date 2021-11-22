@@ -1,24 +1,31 @@
 import { Outlet, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { logout } from '../features/auth/authSlice';
 
-const Layout = ({ setLogged }) => {
+const Layout = () => {
+	const dispatch = useDispatch();
+
 	return (
-		<div>
-			<nav>
-				<ul>
-					<li>
-						<Link to="/">Home</Link>
-					</li>
-					<li>
-						<Link to="/new-post">New Post</Link>
-					</li>
-					<li>
-						<button onClick={() => setLogged(false)}>Log Out</button>
-					</li>
-				</ul>
-			</nav>
-			<hr />
+		<>
+			<Navbar bg="dark" variant="dark">
+				<Container>
+					<Navbar.Brand>Blog</Navbar.Brand>
+					<Nav className="me-auto">
+						<Link className="nav-link" to="/">
+							Home
+						</Link>
+						<Link className="nav-link" to="/new-post">
+							New Post
+						</Link>
+					</Nav>
+					<Button variant="danger" onClick={() => dispatch(logout())}>
+						Log Out
+					</Button>
+				</Container>
+			</Navbar>
 			<Outlet />
-		</div>
+		</>
 	);
 };
 

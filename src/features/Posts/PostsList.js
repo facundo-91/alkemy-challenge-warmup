@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Row, Spinner } from 'react-bootstrap';
+
 import { selectAllPosts, fetchPosts } from './postsSlice';
 import PostCard from './PostCard';
 
@@ -19,9 +21,21 @@ const PostsList = () => {
 	let content;
 
 	if (postStatus === 'loading') {
-		content = <p>LOADING...</p>;
+		content = (
+			<div className="position-absolute top-50 start-50">
+				<Spinner animation="border" role="status">
+					<span className="visually-hidden">Loading...</span>
+				</Spinner>
+			</div>
+		);
 	} else if (postStatus === 'succeeded') {
-		content = posts.map((post) => <PostCard key={post.id} post={post} />);
+		content = (
+			<Row className="g-4" md={4} xs={1}>
+				{posts.map((post) => (
+					<PostCard key={post.id} post={post} />
+				))}
+			</Row>
+		);
 	} else if (postStatus === 'failed') {
 		content = <div>{error}</div>;
 	}
