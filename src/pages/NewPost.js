@@ -5,7 +5,7 @@ const NewPost = () => {
 	return (
 		<Container className="my-4">
 			<h2>New Post</h2>
-			<AddPostForm />;
+			<AddPostForm />
 		</Container>
 	);
 };

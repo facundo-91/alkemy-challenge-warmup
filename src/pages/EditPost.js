@@ -5,7 +5,7 @@ const EditPost = () => {
 	return (
 		<Container className="my-4">
 			<h2>Edit Post</h2>
-			<EditPostForm />;
+			<EditPostForm />
 		</Container>
 	);
 };
