@@ -1,7 +1,10 @@
 import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-function ProtectedPage({ children, isAuthenticated }) {
-	if (!isAuthenticated) {
+function ProtectedPage({ children }) {
+	const { isLoggedIn } = useSelector((state) => state.auth);
+
+	if (!isLoggedIn) {
 		return <Navigate to="/login" />;
 	}
 

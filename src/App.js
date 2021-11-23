@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ProtectedPage from './pages/ProtectedPage';
 import PublicPage from './pages/PublicPage';
@@ -11,22 +11,20 @@ import EditPost from './pages/EditPost';
 import NotFound from './pages/NotFound';
 
 function App() {
-	const [logged, setLogged] = useState(true);
-
 	return (
 		<Routes>
 			<Route
 				element={
-					<PublicPage isAuthenticated={logged}>
+					<PublicPage>
 						<Login />
 					</PublicPage>
 				}
 				path="/login"
 			/>
-			<Route element={<Layout setLogged={setLogged} />}>
+			<Route element={<Layout />}>
 				<Route
 					element={
-						<ProtectedPage isAuthenticated={logged}>
+						<ProtectedPage>
 							<Home />
 						</ProtectedPage>
 					}
@@ -34,7 +32,7 @@ function App() {
 				/>
 				<Route
 					element={
-						<ProtectedPage isAuthenticated={logged}>
+						<ProtectedPage>
 							<Post />
 						</ProtectedPage>
 					}
@@ -42,7 +40,7 @@ function App() {
 				/>
 				<Route
 					element={
-						<ProtectedPage isAuthenticated={logged}>
+						<ProtectedPage>
 							<EditPost />
 						</ProtectedPage>
 					}
@@ -50,7 +48,7 @@ function App() {
 				/>
 				<Route
 					element={
-						<ProtectedPage isAuthenticated={logged}>
+						<ProtectedPage>
 							<NewPost />
 						</ProtectedPage>
 					}
@@ -58,7 +56,7 @@ function App() {
 				/>
 				<Route
 					element={
-						<ProtectedPage isAuthenticated={logged}>
+						<ProtectedPage>
 							<NotFound />
 						</ProtectedPage>
 					}
